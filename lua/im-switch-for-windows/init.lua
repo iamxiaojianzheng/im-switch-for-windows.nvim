@@ -13,7 +13,7 @@ M.opts = {
   },
 }
 
-function M.change_im_select(method)
+local function change_im_select(method)
   local handle
   handle, _ = vim.loop.spawn(
     M.opts.default_command,
@@ -32,11 +32,11 @@ function M.change_im_select(method)
 end
 
 function M.switch_to_zh()
-  return M.change_im_select("zh")
+  return change_im_select("zh")
 end
 
 function M.switch_to_en()
-  return M.change_im_select("en")
+  return change_im_select("en")
 end
 
 local function update_cursor_color()
