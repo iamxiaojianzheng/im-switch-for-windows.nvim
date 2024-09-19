@@ -2,6 +2,8 @@
 
 By differentiating the distinct cursor colors in the Chinese, English, and caps lock states, we can gain a better understanding of the current status of the input method and make informed decisions regarding the next operation.
 
+https://github.com/user-attachments/assets/8bf1949b-e2f2-466e-8f03-34d97f5ec3ae
+
 ## Install and check binary
 
 `im-switch-for-windows.nvim` use binary tools to switch IM, you need to:
