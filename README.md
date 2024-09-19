@@ -1,6 +1,6 @@
 # im-switch-for-windows.nvim
 
-Based on the cursor color, the current input method is more friendly to distinguish between English and Chinese.
+By differentiating the distinct cursor colors in the Chinese, English, and caps lock states, we can gain a better understanding of the current status of the input method and make informed decisions regarding the next operation.
 
 ## 1. Install and check binary
 
