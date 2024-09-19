@@ -10,6 +10,12 @@ M.opts = {
   color = {
     caps = "yellow",
     zh = "red",
+    en = "white",
+  },
+  hl = {
+    caps = "CursorCaps",
+    zh = "CursorZh",
+    en = "Cursor",
   },
 }
 
@@ -52,7 +58,7 @@ local function get_current_mode()
 end
 
 local function update_cursor_color()
-  local result = get_current_mode()
+  local result = get_current_mode() or "en"
   if M.input_state == result then
     return
   end
@@ -61,26 +67,16 @@ local function update_cursor_color()
 
   local mode = vim.fn.mode()
 
+  local color = M.opts.color[result] or "NONE"
   if mode == "i" then
-    if result == "caps" then
-      guicursor = guicursor .. "i-ci-ve:ver25-CursorCaps/lCursorCaps"
-      local color = M.opts.color.caps
-      vim.api.nvim_set_hl(0, "CursorCaps", { fg = color, bg = color })
-    elseif result == "zh" then
-      local color = M.opts.color.zh
-      guicursor = guicursor .. "i-ci-ve:ver25-CursorZh/lCursorZh"
-      vim.api.nvim_set_hl(0, "CursorZh", { fg = color, bg = color })
-    else
+    local hl = M.opts.hl[result]
+    guicursor = guicursor .. "i-ci-ve:ver25-" .. hl
+    vim.api.nvim_set_hl(0, hl, { fg = color, bg = color })
+    if result == "en" then
       guicursor = M.opts.default_guicursor
     end
     vim.opt.guicursor = guicursor
   elseif mode == "n" then
-    local color = "NONE"
-    if result == "caps" then
-      color = M.opts.color.caps
-    elseif result == "zh" then
-      color = M.opts.color.zh
-    end
     vim.api.nvim_set_hl(0, "Cursor", { fg = color, bg = color })
     vim.opt.guicursor = M.opts.default_guicursor
   end
