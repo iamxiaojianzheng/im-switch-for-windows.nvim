@@ -2,7 +2,7 @@
 
 By differentiating the distinct cursor colors in the Chinese, English, and caps lock states, we can gain a better understanding of the current status of the input method and make informed decisions regarding the next operation.
 
-## 1. Install and check binary
+## Install and check binary
 
 `im-switch-for-windows.nvim` use binary tools to switch IM, you need to:
 
@@ -43,7 +43,7 @@ Or run shell command directly from Neovim
 :!im-switch.exe zh
 ```
 
-## 2. Install and setup this plugin
+## Install and setup this plugin
 
 A good-enough minimal config in Lazy.nvim
 
@@ -74,3 +74,8 @@ Options with its default values
     end,
 }
 ```
+
+## Limitations
+
+- Required Lua, so only work in Neovim
+- Required guicursor support
