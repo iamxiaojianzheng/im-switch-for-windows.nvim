@@ -64,11 +64,23 @@ Options with its default values
 {
     "iamxiaojianzheng/im-switch-for-windows.nvim",
     opts = {
+      -- default is ok
+      default_command = "im-switch.exe",
+      -- default get from vim.opt.guicursor
+      default_guicursor = nil,
       color = {
         -- The color the cursor displays when caps mode is enabled.
         caps = "yellow",
         -- The color of the cursor when Chinese mode is enabled.
         zh = "red",
+        -- The color of the cursor when English mode is enabled.
+        en = "white",
+      },
+      -- custom highlight group name
+      hl = {
+        caps = "CursorCaps",
+        zh = "CursorZh",
+        en = "Cursor",
       },
     },
     config = function(_, opts)
