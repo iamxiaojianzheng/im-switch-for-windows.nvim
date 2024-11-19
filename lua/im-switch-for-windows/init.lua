@@ -50,7 +50,7 @@ local function get_current_mode()
   local result = nil
 
   if handle ~= nil then
-    result = handle:read("*a")
+    result = handle:read("*a"):gsub("%s+", "")
     handle:close()
   end
 
@@ -106,6 +106,11 @@ function M.setup(opts)
   vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     callback = M.start_hilight,
+  })
+
+  vim.api.nvim_create_autocmd({ "BufLeave", "VimLeavePre", "WinLeave" }, {
+    pattern = "*",
+    callback = M.stop_hilight,
   })
 
   vim.api.nvim_create_autocmd("InsertLeave", {
